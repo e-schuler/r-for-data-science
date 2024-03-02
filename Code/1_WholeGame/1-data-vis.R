@@ -1,5 +1,8 @@
-#source('dependencies.R')
-
+box::use(
+  ggplot2[...],
+  palmerpenguins[...],
+  dplyr[...]
+)
 
 ggplot(
   data = penguins,
