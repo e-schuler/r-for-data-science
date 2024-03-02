@@ -4,6 +4,9 @@ box::use(
   dplyr[...]
 )
 
+### First steps:
+
+## Scratch
 ggplot(
   data = penguins,
   aes(x = flipper_length_mm, y = body_mass_g) #, color = species)
@@ -16,8 +19,8 @@ ggplot(
        shape = "Species"
       )
 
-### exercises
-# 1. How many rows are in penguims? How many columns
+### Exercises
+# 1. How many rows are in penguins? How many columns
 count(penguins) #counts rows
 length(penguins) #counts columns
 
@@ -52,7 +55,7 @@ ggplot(
 ) + geom_point(aes(color = bill_depth_mm)) +
   geom_smooth()
 
-
+# 9.
 ggplot(
   data = penguins,
   mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
@@ -60,3 +63,20 @@ ggplot(
   geom_point() +
   geom_smooth(se = FALSE)
 
+# 10. No because the aes() definitions are the same at the global and geom level
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
