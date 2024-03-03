@@ -1,7 +1,8 @@
 box::use(
   ggplot2[...],
   palmerpenguins[...],
-  dplyr[...]
+  dplyr[...],
+  tidyverse[...]
 )
 
 ### First steps:
@@ -80,3 +81,29 @@ ggplot() +
     data = penguins,
     mapping = aes(x = flipper_length_mm, y = body_mass_g)
   )
+
+
+### Distributions
+
+## Exercises
+# 1
+penguins |> ggplot() + geom_bar(aes(y = species))
+
+# 2 - difference b/w color and fill
+ggplot(penguins, aes(x = species)) +
+  geom_bar(color = "red")
+
+ggplot(penguins, aes(x = species)) +
+  geom_bar(fill = "red")
+
+# 3
+penguins |> ggplot() + 
+  geom_histogram(
+    aes(x = bill_length_mm),
+  #binwidth = 5,
+    bins = 10
+  )
+
+# 4
+diamonds |> ggplot() +
+  geom_histogram(aes(x = carat), binwidth = 0.05)
